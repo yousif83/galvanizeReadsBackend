@@ -14,6 +14,12 @@ module.exports = {
 		.join('book_author','book_author.author_id','author.id')
 		.where('book_author.book_id',bookId)
 	},
+	getBooksByAuthorId: function(authorId){
+		return knex('books')
+		.select('*')
+		.join('book_author','book_author.book_id','books.id')
+		.where('book_author.author_id', authorId)
+	},
 	getAllAuthors: function(){
 		return knex('author')
 	},
@@ -38,11 +44,3 @@ module.exports = {
 	}
 
 }
-//
-// var body1={
-//     title:"any thing",
-//     genre:"c#",
-//     description:"dfgfg dffdgfdg dfgdfgdfgd",
-//     cover:"https//:fgfgfgfdgdfd.com",
-//     authors:['abbas','shakeeb','daban']
-//   }
